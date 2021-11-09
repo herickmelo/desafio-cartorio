@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <link href = "css/styles.css" rel = "stylesheet"/>
+      <title>Spring Boot Application</title>
+   </head>
+   <body>
+	<form action="#" th:action="@{/addcartorio}" th:object="${cartorio}" method="post">
+	    <label for="nome">Nome</label>
+	    <input type="text" th:field="*{nome}" id="nome" placeholder="Nome">
+	    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+	    <label for="endereco">Endereço</label>
+	    <input type="text" th:field="*{endereco}" id="endereco" placeholder="Endereço">
+	    <span th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}"></span>
+	      <select th:field="*{certidoes}">
+		    <option th:each="certidao: ${certidoes}" th:value="${certidoes}" th:text="${certidao.nome}" />
+		  </select>
+	    <input type="submit" value="Add Cartório">   
+	</form>
+   </body>
+</html>
